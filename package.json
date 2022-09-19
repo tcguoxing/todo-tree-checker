@@ -1,0 +1,23 @@
+{
+  "name": "todo-tree-checker",
+  "version": "1.0.0",
+  "description": "todo-check vite-plugin npm package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tcguoxing/todo-tree-checker.git"
+  },
+  "keywords": [
+    "todo-tree",
+    "check"
+  ],
+  "author": "Guoxing Sun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tcguoxing/todo-tree-checker/issues"
+  },
+  "homepage": "https://github.com/tcguoxing/todo-tree-checker#readme"
+}
