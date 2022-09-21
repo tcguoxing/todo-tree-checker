@@ -4,7 +4,6 @@ var fs = require('fs-extra')
 var path = require('path')
 var hasTodo = false
 
-
 function checkTodos(rootPath = "src") {
   // 该功能分两步，第一步是找到所有文件
   const callback = (filePath, dirent) => {
@@ -27,10 +26,6 @@ function checkTodos(rootPath = "src") {
   }
   return "这是我自己写的插件，看看能不能运行吧";
 }
-const rawArgv = process.argv.slice(2); // unknown
-const args = require("minimist")(rawArgv, {});
-const argRootpath = args._[0]; // unknown
-const artRegex = args._[1];
 
 function walkSync(currentDirPath, callback) {
 //   var fs = require("fs-extra");
@@ -47,6 +42,12 @@ function walkSync(currentDirPath, callback) {
     }
   });
 }
+
+// accept reference
+const rawArgv = process.argv.slice(2); // unknown
+const args = require("minimist")(rawArgv, {});
+const argRootpath = args._[0]; // unknown
+const artRegex = args._[1];
 checkTodos(
   argRootpath.trim() === "" ? rootPath : argRootpath.trim(),
   artRegex.trim() === "" ? regex : artRegex.trim()
