@@ -1,17 +1,22 @@
 var rootPath = "src";
-var regex = /\/\/[ ]*(todos)/;
+// var regex = /\/\/[ ]*(todos)/;
 var hasTodo = false
 var fs = require('fs-extra')
 var path = require('path')
 
-function checkTodos(rootPath = "src") {
+function checkTodos(rootPath = "src", target = "todos") {
+  let regex = new RegExp('\/\/[ ]*(' + target +')') // 会自动在前后各加一个/。
   // 该功能分两步，第一步是找到所有文件
   const callback = (filePath, dirent) => {
     if (filePath) {
-      let result = fs.readFileSync(filePath, "utf8")
-      if(regex.test(String(result))){
-          hasTodo = false
-          console.log(`_______________filePath_______________ \r\n ${filePath}内含有todos。`)
+      const result = fs.readFileSync(filePath, "utf8")
+      const resultList = result.split('\n')
+      for (let index = 0; index < resultList.length; index++) {
+        if(regex.test(String(resultList[index]))){
+            console.log('regex type：', typeof regex)
+            hasTodo = true
+            console.log(`_______________filePath_______________ \r\n ${filePath+':'+index}内含有${target}。\r\n_______________filePath_______________ `)
+        }
       }
     }
   }

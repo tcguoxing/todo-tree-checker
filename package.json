@@ -15,7 +15,7 @@
     "todo-tree",
     "check"
   ],
-  "bin":{
+  "bin": {
     "todo-tree-checker": ".bin.js"
   },
   "author": "Guoxing Sun",
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/tcguoxing/todo-tree-checker/issues"
   },
-  "homepage": "https://github.com/tcguoxing/todo-tree-checker#readme"
+  "homepage": "https://github.com/tcguoxing/todo-tree-checker#readme",
+  "dependencies": {
+    "fs-extra": "^10.1.0"
+  }
 }
