@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/tcguoxing/todo-tree-checker#readme",
   "dependencies": {
-    "fs-extra": "^10.1.0"
+    "fs-extra": "^10.1.0",
+    "minimist": "^1.2.6"
   }
 }

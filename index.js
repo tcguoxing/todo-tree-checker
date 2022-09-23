@@ -4,7 +4,9 @@ var hasTodo = false
 var fs = require('fs-extra')
 var path = require('path')
 
-function checkTodos(rootPath = "src", target = "todos") {
+var checkTodos = function(rootPath = "src", target = "todos") {
+  console.log('rootPath: ', rootPath)
+  console.log('target: ', target)
   let regex = new RegExp('\/\/[ ]*(' + target +')') // 会自动在前后各加一个/。
   // 该功能分两步，第一步是找到所有文件
   const callback = (filePath, dirent) => {
@@ -30,7 +32,7 @@ function checkTodos(rootPath = "src", target = "todos") {
   return "这是我自己写的插件，看看能不能运行吧";
 }
 
-function walkSync(currentDirPath, callback) {
+var walkSync = function (currentDirPath, callback) {
   const files = fs.readdirSync(currentDirPath, { withFileTypes: true })
   files.forEach(function (dirent) {
     var filePath = path.join(currentDirPath, dirent.name);
@@ -59,4 +61,4 @@ function walkSync(currentDirPath, callback) {
 //   regex = this.regex;
 // }
 
-checkTodos()
+module.exports.checkTodos = checkTodos
