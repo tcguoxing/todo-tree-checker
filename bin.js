@@ -1,17 +1,13 @@
 #!/usr/bin/env node
 
-const todoChecker = require('./lib')
+const todoChecker = require('./lib/index')
 
-// import checkTodos from './lib'
-console.log('checkTodos: ', todoChecker.checkTodos)
 const rawArgv = process.argv.slice(2); // unknown
 const args = require("minimist")(rawArgv, {});
-const argRootpath = args._[0]; // unknown
-const artRegex = args._[1];
+const searchPath = args._[0] !== undefined && args._[0].trim() !== "" ? args._[0].trim() : 'src'
+const target = args._[1] !== undefined && args._[1].trim() !== "" ? args._[1].trim() : 'todos'
 
-console.log();
-console.log();
 todoChecker.checkTodos(
-  argRootpath.trim() === "" ? rootPath : argRootpath.trim(),
-  artRegex.trim() === "" ? regex : artRegex.trim()
+  searchPath, // set default searchPath 'src'
+  target // set default target todos
 );
