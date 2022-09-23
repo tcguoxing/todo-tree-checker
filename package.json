@@ -1,6 +1,6 @@
 {
   "name": "todo-tree-checker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "todo-check vite-plugin npm package",
   "main": "./lib/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "check"
   ],
   "bin": {
-    "todo-tree-checker": ".bin.js"
+    "todo-tree-checker": "./bin.js"
   },
   "author": "Guoxing Sun",
   "license": "MIT",
