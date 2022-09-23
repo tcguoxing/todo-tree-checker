@@ -2,7 +2,14 @@
 It can scan all file under src folder(default), You can choose your own folder by your ease.
 ## usage
 
-You can add script "check": "todo-tree-checker" in your package.json.
+You can add script  in your package.json.
+```
+"script": {
+    "check": "todo-tree-checker"
+    ...
+}
+```
+You can input your path and name.
 ```
 npm run todo-tree-checker // default src path
 npm run todo-tree-checker ../another-program/src/view // another-program's src/view folder
