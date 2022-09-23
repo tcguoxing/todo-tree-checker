@@ -3,10 +3,9 @@ var hasTodo = false
 var fs = require('fs-extra')
 var path = require('path')
 
-var checkTodos = function(searchPath = "src", target = "todos") {
+var checkTodos = function(searchPath = "src", target = "todo") {
   findTarget = target
   let regex = new RegExp('\/\/[ ]*(' + target +' |'+ target + '$)') // 会自动在前后各加一个/。
-  console.log('regex: ', regex)
 
   // 该功能分两步，第一步是找到所有文件
   const callback = (filePath, dirent) => {
@@ -17,17 +16,17 @@ var checkTodos = function(searchPath = "src", target = "todos") {
         if(regex.test(resultList[index].trimEnd())){
             hasTodo = true
             let rowIndex = regex.exec(resultList[index].trimEnd()).index
-            console.log(`_______________filePath_______________ \r\n++\r\n++\r\n ${filePath}:${index+1}:${rowIndex+1}内含有${findTarget}。\r\n++\r\n++ `)
+            console.log(`_______________filePath_______________ \r\n++\r\n++\r\n ${filePath}:${index+1}:${rowIndex+1} has ${findTarget}。\r\n++\r\n++ `)
         }
       }
     }
   }
   walkSync(searchPath.trim() !== "" ? searchPath.trim() : "src", callback);
   if (hasTodo) {
-    console.log(`运行结束，含有${findTarget}。`)
+    console.log(`Scan over and target has ${findTarget}。`)
     process.exit(1)
   } else {
-    console.log(`不含有${findTarget}，运行继续。`)
+    console.log(`There are no ${findTarget} under the target.`)
   }
 }
 
