@@ -13,9 +13,9 @@ function checkTodos(rootPath = "src", target = "todos") {
       const resultList = result.split('\n')
       for (let index = 0; index < resultList.length; index++) {
         if(regex.test(String(resultList[index]))){
-            console.log('regex type：', typeof regex)
             hasTodo = true
-            console.log(`_______________filePath_______________ \r\n ${filePath+':'+index}内含有${target}。\r\n_______________filePath_______________ `)
+            let rowIndex = regex.exec(resultList[index])
+            console.log(`_______________filePath_______________ \r\n ${filePath}:${index+1}:${rowIndex}内含有${target}。\r\n_______________filePath_______________ `)
         }
       }
     }
