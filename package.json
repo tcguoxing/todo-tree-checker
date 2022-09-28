@@ -4,8 +4,10 @@
   "description": "todo-check vite-plugin npm package",
   "main": "./lib/index.js",
   "scripts": {
+    "dev": "temir main.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "rollup": "rollup --config rollup.config.js"
+    "rollup": "rollup --config rollup.config.js",
+    "temir": "@temir/playground"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   },
   "homepage": "https://github.com/tcguoxing/todo-tree-checker#readme",
   "dependencies": {
+    "@temir/cli": "^0.0.20",
     "@temir/core": "^0.0.20",
     "fs-extra": "^10.1.0",
     "minimist": "^1.2.6"
