@@ -7,7 +7,7 @@ var checkTodos = function(searchPath = "src", target = "todo") {
   findTarget = target
   let regex = new RegExp('\/\/[ ]*(' + target +' |'+ target + '$)') // 会自动在前后各加一个/。
 
-  // 该功能分两步，第一步是找到所有文件
+  // first step, find all file under target path
   const callback = (filePath, dirent) => {
     if (filePath) {
       const result = fs.readFileSync(filePath, "utf8")
