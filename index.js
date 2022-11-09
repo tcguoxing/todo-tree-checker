@@ -5,7 +5,7 @@ var path = require('path')
 
 var checkTodos = function(searchPath = "src", target = "todo") {
   findTarget = target
-  let regex = new RegExp('\/\/[ ]*(' + target +' |'+ target + '$)') // 会自动在前后各加一个/。
+  let regex = new RegExp('\/\/[ ]*(' + target +' |'+ target + '$)') 
 
   // first step, find all file under target path
   const callback = (filePath, dirent) => {

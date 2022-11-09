@@ -1,6 +1,6 @@
 {
   "name": "todo-tree-checker",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "todo-check vite-plugin npm package",
   "main": "./lib/index.js",
   "scripts": {
