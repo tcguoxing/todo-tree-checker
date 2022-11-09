@@ -1,7 +1,7 @@
 {
   "name": "todo-tree-checker",
   "version": "1.0.3",
-  "description": "todo-check vite-plugin npm package",
+  "description": "One tool can mention your warning info before your program build.",
   "main": "./lib/index.js",
   "scripts": {
     "dev": "temir main.ts",

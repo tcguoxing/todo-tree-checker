@@ -1,10 +1,3 @@
-<script lang="ts" setup>
-import { TBox, TText } from '@temir/core'
-import TSpinner from '@temir/spinner'
-
-const props = defineProps(['nowFile'])
-</script>
-  
 <template>
   <TBox
     :margin="5"
@@ -20,3 +13,24 @@ const props = defineProps(['nowFile'])
     </TText>
   </TBox>
 </template>
+
+<script>
+import { TBox, TText } from '@temir/core'
+import TSpinner from '@temir/spinner'
+import { ref } from 'vue'
+
+export default {
+  name: 'processing',
+  components: {
+    TBox, TText, TSpinner
+  }, 
+  props: ['nowFile'],
+  // const props = defineProps(['nowFile'])
+  setup(props) {
+    return {
+      props
+    }
+}
+}
+
+</script>

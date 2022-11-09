@@ -4,7 +4,7 @@ import { TBox, TText } from "@temir/core";
 const count = ref(0);
 setInterval(() => {
   count.value++;
-}, 100);
+}, 100); // 希望能够展现出
 </script>
 
 <template>
