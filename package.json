@@ -5,6 +5,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "dev": "temir main.ts",
+    "dev:js": "temir main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "rollup": "rollup --config rollup.config.js",
     "temir": "@temir/playground"
