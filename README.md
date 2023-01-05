@@ -9,13 +9,14 @@ You can add script  in your package.json.
     ...
 }
 ```
-You can input your path and name.
-```
-| ----| ----|
+You can config your path and tag.
+
+| command line | description |
+|  ----  | ----  |
 | npm run check | default src path. |
 | npm run check ../another-program/src/view | another-program's src/view folder. |
 | npm run check ../another-program/src/view fixme | another-program's src/view folder and check fixme. |
-```
+
 if your target has todo, the result is like below: 
 ```
 _______________filePath_______________ 
