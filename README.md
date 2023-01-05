@@ -11,9 +11,10 @@ You can add script  in your package.json.
 ```
 You can input your path and name.
 ```
-npm run todo-tree-checker // default src path
-npm run todo-tree-checker ../another-program/src/view // another-program's src/view folder
-npm run todo-tree-checker ../another-program/src/view fixme // another-program's src/view folder and check fixme
+| ----| ----|
+| npm run check | default src path. |
+| npm run check ../another-program/src/view | another-program's src/view folder. |
+| npm run check ../another-program/src/view fixme | another-program's src/view folder and check fixme. |
 ```
 if your target has todo, the result is like below: 
 ```
