@@ -4,8 +4,7 @@ const { isDef, isArray, getArrayWithoutKey, consoleInfo } = require('./share/uti
 const todoChecker = require('./src/core/index')
 
 const rawArgv = process.argv.slice(2); // process.argv返回一个list，其中第一个有node版本号，第二个是程序开始位置，第三个往后就是所有参数；
-// console.log('rawArgv: ', rawArgv)
-const result = require("minimist")(rawArgv, "opts['--']");
+const result = require("minimist")(rawArgv, {});
 
 let searchPath = ['src']
 let target = ['todo']
