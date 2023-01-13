@@ -2,7 +2,7 @@
 import { ref } from "@vue/runtime-core";
 import { TBox, TText } from "@temir/core";
 const count = ref(0);
-setInterval(() => {
+setInterval(() => { // todo
   count.value++;
 }, 100); // 希望能够展现出
 </script>

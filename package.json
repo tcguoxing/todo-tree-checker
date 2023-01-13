@@ -1,8 +1,8 @@
 {
   "name": "todo-tree-checker",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "One tool can mention your warning info before your program build.",
-  "main": "./lib/index.js",
+  "main": ".index.js",
   "scripts": {
     "dev": "temir main.ts",
     "dev:js": "temir main.js",
