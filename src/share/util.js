@@ -1,5 +1,5 @@
-function isArray(params) {
-    return Object.prototype.toString.call(params) === '[object Array]'
+function isValidArray(params) {
+    return Object.prototype.toString.call(params) === '[object Array]' && params.length > 0
 }
 
 function isDef(params) {
@@ -30,4 +30,4 @@ function consoleInfo(params) {
     }
 }
 
-module.exports = {isArray, isDef, getArrayWithoutKey, consoleInfo}
+module.exports = {isValidArray, isDef, getArrayWithoutKey, consoleInfo}

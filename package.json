@@ -31,6 +31,7 @@
     "@temir/cli": "^0.0.20",
     "@temir/core": "^0.0.20",
     "@temir/spinner": "0.0.20",
+    "commander": "^10.0.0",
     "fs-extra": "^10.1.0",
     "minimist": "^1.2.6"
   }
