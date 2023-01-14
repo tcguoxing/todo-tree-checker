@@ -32,20 +32,11 @@ if (isDef(parseArgs) && JSON.stringify(parseArgs)  !== '{}') {
   }
 }
 
-
-
 console.log('searchPath: ', searchPath)
 console.log('target: ', target)
 
-// const searchPath = args._[0] !== undefined && args._[0].trim() !== "" ? args._[0].trim() : 'src'
-// const target = args._[1] !== undefined && args._[1].trim() !== "" ? args._[1].trim() : 'todo'
-
 return
 todoChecker.checkTodos(
-  searchPath, // set default searchPath 'src'
-  target // set default target todo
+  searchPath, // set default searchPath ['src']
+  target // set default target ['todo']
 );
-
-// function log() {
-//   console.log(Array.from(arguments).reduce((a, b) => String(a) +  String(b) ))
-// }
