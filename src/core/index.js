@@ -2,6 +2,8 @@ var findTarget = '';
 var hasTodo = false
 var fs = require('fs-extra')
 var path = require('path')
+var allTargets = []
+var pathIterater = function() {}
 const { isValidArray, consoleInfo, makeListIterator } = require('../share/util')
 
 var checkTodos = function(searchPaths = ["src"], targets = ["todo"]) {
@@ -14,26 +16,19 @@ var checkTodos = function(searchPaths = ["src"], targets = ["todo"]) {
     return
   }
 
-  let pathIterater = makeListIterator(searchPaths)
+  pathIterater = makeListIterator(searchPaths)
+  allTargets = targets
 
-  console.log('pathIterater:', pathIterater);
-  console.log('next Value: ', pathIterater.next()); 
-  return
-  findNextPath(pathIterater.next(), targets)
-
-  for (let i = 0; i < searchPaths.length; i++) {
-    for (let j = 0; j < targets.length; j++) {
-      checkTarget(searchPaths[i], targets[j])
-    }
-  }
+  findNextPath()
 }
 
-function findNextPath(path, targets) {
+function findNextPath() {
+  let path = pathIterater.next()
   if (path.done) {
     return
   }
-  for (let i = 0; i < targets.length; i++) {
-    checkTarget(path.value, targets[i])
+  for (let i = 0; i < allTargets.length; i++) {
+    checkTarget(path.value, allTargets[i])
   }
 }
 
@@ -69,20 +64,22 @@ var walkSync = function (currentDirPath, callback) {
   // 
   try {
     const files = fs.readdirSync(currentDirPath, { withFileTypes: true })
+    files.forEach(function (dirent) {
+      var filePath = path.join(currentDirPath, dirent.name);
+      if (dirent.isFile()) {
+        callback(filePath, dirent);
+      } else if (dirent.isDirectory()) {
+        walkSync(filePath, callback);
+      } else {
+        console.log(`todos检查完成，时间为：${new Date().getTime()}`)
+      }
+    });
+    console.log('currentDirPath: ', currentDirPath);
   } catch (error) {
     // 跳过去搜索其他文件夹。
     consoleInfo('no path: ', currentDirPath)
+    findNextPath()
   }
-  files.forEach(function (dirent) {
-    var filePath = path.join(currentDirPath, dirent.name);
-    if (dirent.isFile()) {
-      callback(filePath, dirent);
-    } else if (dirent.isDirectory()) {
-      walkSync(filePath, callback);
-    } else {
-      console.log(`todos检查完成，时间为：${new Date().getTime()}`)
-    }
-  });
 }
 
 module.exports.checkTodos = checkTodos
