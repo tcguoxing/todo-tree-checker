@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { isDef, isValidArray, getArrayWithoutKey, consoleInfo } = require('./src/share/util');
+const { isDef, isValidArray } = require('./src/share/util');
 const todoChecker = require('./src/core/index')
 const { program } = require('commander');
 
@@ -32,11 +32,8 @@ if (isDef(parseArgs) && JSON.stringify(parseArgs)  !== '{}') {
   }
 }
 
-console.log('searchPath: ', searchPath)
-console.log('target: ', target)
-
-return
 todoChecker.checkTodos(
   searchPath, // set default searchPath ['src']
   target // set default target ['todo']
 );
+

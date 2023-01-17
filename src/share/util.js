@@ -30,4 +30,28 @@ function consoleInfo(params) {
     }
 }
 
-module.exports = {isValidArray, isDef, getArrayWithoutKey, consoleInfo}
+function makeListIterator(list, step = 1) {
+    if (!this.isValidArray(list)) {
+        return undefined
+    }
+    let nextIndex = 0; // 初始化索引值
+    let end = list.length; // 最大索引值
+    let iterationCount = 0;
+
+    const rangeIterator = {
+       next: function() {
+           let result;
+           if (nextIndex < end) {
+               result = { value: list[nextIndex], done: false }
+               nextIndex += step;
+               iterationCount++;
+               return result;
+           }
+           return { value: list[iterationCount], done: true }
+       }
+    };
+    return rangeIterator;
+}
+
+
+module.exports = {isValidArray, isDef, getArrayWithoutKey, consoleInfo, makeListIterator}

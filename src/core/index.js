@@ -2,8 +2,36 @@ var findTarget = '';
 var hasTodo = false
 var fs = require('fs-extra')
 var path = require('path')
+const { isValidArray, consoleInfo, makeListIterator } = require('../share/util')
 
-var checkTodos = function(searchPath = "src", target = "todo") {
+var checkTodos = function(searchPaths = ["src"], targets = ["todo"]) {
+  if (!isValidArray(searchPaths)) {
+    consoleInfo(`Invalid search path and search paths are: ${searchPaths}.`)
+    return 
+  }
+  if (!isValidArray(targets)) {
+    consoleInfo(`Invalid search target and search targets are: ${targets}.`)
+    return
+  }
+
+  let pathIterater = makeListIterator(searchPaths)
+
+  findNextPath(pathIterater.next().value, targets)
+
+  for (let i = 0; i < searchPaths.length; i++) {
+    for (let j = 0; j < targets.length; j++) {
+      checkTarget(searchPaths[i], targets[j])
+    }
+  }
+}
+
+function findNextPath(path, targets) {
+  for (let i = 0; i < targets.length; i++) {
+    checkTarget(path, targets[i])
+  }
+}
+
+function checkTarget(searchPath, target) {
   findTarget = target
   let regex = new RegExp('\/\/[ ]*(' + target +' |'+ target + '$)') // 会自动在前后各加一个/。
 
@@ -21,7 +49,8 @@ var checkTodos = function(searchPath = "src", target = "todo") {
       }
     }
   }
-  walkSync(searchPath.trim() !== "" ? searchPath.trim() : "src", callback);
+
+  walkSync(searchPath, callback);
   if (hasTodo) {
     console.log(`Scan over and target has ${findTarget}。`)
     process.exit(1)
@@ -31,7 +60,13 @@ var checkTodos = function(searchPath = "src", target = "todo") {
 }
 
 var walkSync = function (currentDirPath, callback) {
-  const files = fs.readdirSync(currentDirPath, { withFileTypes: true })
+  // 
+  try {
+    const files = fs.readdirSync(currentDirPath, { withFileTypes: true })
+  } catch (error) {
+    // 跳过去搜索其他文件夹。
+    consoleInfo('no path: ', currentDirPath)
+  }
   files.forEach(function (dirent) {
     var filePath = path.join(currentDirPath, dirent.name);
     if (dirent.isFile()) {
