@@ -16,7 +16,10 @@ var checkTodos = function(searchPaths = ["src"], targets = ["todo"]) {
 
   let pathIterater = makeListIterator(searchPaths)
 
-  findNextPath(pathIterater.next().value, targets)
+  console.log('pathIterater:', pathIterater);
+  console.log('next Value: ', pathIterater.next()); 
+  return
+  findNextPath(pathIterater.next(), targets)
 
   for (let i = 0; i < searchPaths.length; i++) {
     for (let j = 0; j < targets.length; j++) {
@@ -26,8 +29,11 @@ var checkTodos = function(searchPaths = ["src"], targets = ["todo"]) {
 }
 
 function findNextPath(path, targets) {
+  if (path.done) {
+    return
+  }
   for (let i = 0; i < targets.length; i++) {
-    checkTarget(path, targets[i])
+    checkTarget(path.value, targets[i])
   }
 }
 

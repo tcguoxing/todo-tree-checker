@@ -31,7 +31,7 @@ function consoleInfo(params) {
 }
 
 function makeListIterator(list, step = 1) {
-    if (!this.isValidArray(list)) {
+    if (!isValidArray(list)) {
         return undefined
     }
     let nextIndex = 0; // 初始化索引值
