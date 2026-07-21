@@ -1,0 +1,40 @@
+:root {
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: #1a2332;
+  background:
+    radial-gradient(circle at 10% 20%, #d9f2ff 0%, transparent 40%),
+    radial-gradient(circle at 90% 10%, #ffe8d6 0%, transparent 35%),
+    linear-gradient(160deg, #f7fafc 0%, #eef3f8 100%);
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  margin-top: 1.5rem;
+  border: 0;
+  background: #1a2332;
+  color: #fff;
+  padding: 0.65rem 1.1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #31415a;
+}

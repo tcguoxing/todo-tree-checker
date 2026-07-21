@@ -1,0 +1,3 @@
+# Local Vite build output
+dist
+.DS_Store
