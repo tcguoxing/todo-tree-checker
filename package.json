@@ -1,6 +1,6 @@
 {
   "name": "todo-tree-checker",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Scan TODO/FIXME comments via CLI or as a Vite/Webpack plugin before build.",
   "main": "./src/index.js",
   "exports": {
