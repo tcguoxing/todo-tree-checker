@@ -1,11 +1,28 @@
 {
   "name": "todo-tree-checker",
-  "version": "1.0.4",
-  "description": "todo-check vite-plugin npm package",
-  "main": "./lib/index.js",
+  "version": "1.2.0",
+  "description": "Scan TODO/FIXME comments via CLI or as a Vite/Webpack plugin before build.",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./vite": "./src/vite.js",
+    "./webpack": "./src/webpack.js",
+    "./cli": "./src/cli.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin",
+    "src",
+    "components",
+    "README.md",
+    "README-EN.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "rollup": "rollup --config rollup.config.js"
+    "todo-check": "node ./bin/todo-check.js",
+    "todo-check:plain": "node ./bin/todo-check.js --no-pretty",
+    "test": "node ./bin/todo-check.js --no-pretty --no-fail-on-match -p src -t todo",
+    "prepublishOnly": "node ./bin/todo-check.js --help >/dev/null"
   },
   "repository": {
     "type": "git",
@@ -13,10 +30,15 @@
   },
   "keywords": [
     "todo-tree",
+    "todo",
+    "fixme",
+    "vite-plugin",
+    "webpack-plugin",
     "check"
   ],
   "bin": {
-    "todo-tree-checker": "./bin.js"
+    "todo-check": "./bin/todo-check.js",
+    "todo-tree-checker": "./bin/todo-check.js"
   },
   "author": "Guoxing Sun",
   "license": "MIT",
@@ -25,7 +47,16 @@
   },
   "homepage": "https://github.com/tcguoxing/todo-tree-checker#readme",
   "dependencies": {
-    "fs-extra": "^10.1.0",
-    "minimist": "^1.2.6"
+    "@temir/core": "^0.0.20",
+    "@temir/spinner": "0.0.20",
+    "@vue/runtime-core": "^3.5.40",
+    "commander": "^10.0.1",
+    "fs-extra": "^10.1.0"
+  },
+  "optionalDependencies": {
+    "@temir/cli": "^0.0.20"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }

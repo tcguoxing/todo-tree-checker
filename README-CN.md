@@ -2,16 +2,16 @@
 
 [中文](./README-CN.md) | [English](./README.md)
 
-Scan source files for `TODO` / `FIXME` (or custom) line comments — as a CLI, or as a Vite / Webpack plugin before build.
+在构建前扫描源码中的 `TODO` / `FIXME`（或自定义关键词）行注释 —— 可作独立 CLI，也可作为 Vite / Webpack 插件使用。
 
-## Install
+## 安装
 
 ```bash
 pnpm add -D todo-tree-checker
-# or: npm i -D todo-tree-checker
+# 或: npm i -D todo-tree-checker
 ```
 
-## package.json config
+## package.json 配置
 
 ```json
 {
@@ -29,11 +29,11 @@ pnpm add -D todo-tree-checker
 }
 ```
 
-Priority: CLI flags / plugin options > `todoTreeChecker` field > defaults.
+优先级：CLI 参数 / 插件构造参数 > `todoTreeChecker` 字段 > 内置默认值。
 
 ## CLI
 
-**Temir pretty UI is on by default** (rounded spinner frame + double-border result panel).
+默认开启 **Temir 终端美化**（圆角边框 + 旋转扫描动画 + 双线结果面板）。
 
 ```bash
 pnpm todo-check
@@ -42,12 +42,12 @@ pnpm todo-check --no-pretty
 pnpm todo-check --no-fail-on-match --report-file ./todo-report.json
 ```
 
-- **pretty** (default `true`): Temir terminal UI. Use `--no-pretty` or `"pretty": false` for plain text.
-- **failOnMatch** (default `true`): exit `1` when matches are found.
+- **pretty**（默认 `true`）：Temir 美化终端。加 `--no-pretty` 或配置 `"pretty": false` 可改为纯文本。
+- **failOnMatch**（默认 `true`）：发现匹配时以退出码 `1` 结束。
 
-Legacy bin name `todo-tree-checker` still works.
+旧命令名 `todo-tree-checker` 仍然可用。
 
-## Vite plugin
+## Vite 插件
 
 ```js
 // vite.config.js
@@ -55,14 +55,14 @@ import todoTreeChecker from 'todo-tree-checker/vite'
 
 export default {
   plugins: [
-    todoTreeChecker() // reads package.json; override with todoTreeChecker({ failOnMatch: false })
+    todoTreeChecker() // 读取 package.json；可用 todoTreeChecker({ failOnMatch: false }) 覆盖
   ],
 }
 ```
 
-Runs on `buildStart` (build only). Plugin default is plain output (`pretty: false`).
+在 `buildStart` 时执行（仅 build）。插件默认使用纯文本输出（`pretty: false`）。
 
-## Webpack plugin
+## Webpack 插件
 
 ```js
 const TodoTreeCheckerPlugin = require('todo-tree-checker/webpack')
@@ -72,7 +72,7 @@ module.exports = {
 }
 ```
 
-## Programmatic API
+## 编程式 API
 
 ```js
 const { scan, resolveConfig } = require('todo-tree-checker')
