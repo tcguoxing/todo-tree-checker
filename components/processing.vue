@@ -1,36 +1,38 @@
 <template>
   <TBox
-    :margin="5"
-    width="20"
+    flex-direction="column"
     border-style="round"
-    justify-content="center"
+    border-color="yellow"
+    :padding-x="2"
+    :padding-y="1"
+    :margin-y="1"
   >
-    <TText>
-      <TText color="yellow">
-        <TSpinner />
-      </TText>
-      {{props.nowFile}} is processing...
-    </TText>
+    <TBox align-items="center">
+      <TText color="yellow"><TSpinner /></TText>
+      <TText color="yellow">  Scanning {{ pathsLabel }}</TText>
+    </TBox>
+    <TText dim-color>looking for: {{ targetsLabel }}</TText>
   </TBox>
 </template>
 
 <script>
 import { TBox, TText } from '@temir/core'
 import TSpinner from '@temir/spinner'
-import { ref } from 'vue'
 
 export default {
-  name: 'processing',
-  components: {
-    TBox, TText, TSpinner
-  }, 
-  props: ['nowFile'],
-  // const props = defineProps(['nowFile'])
-  setup(props) {
-    return {
-      props
-    }
+  name: 'Processing',
+  components: { TBox, TText, TSpinner },
+  props: {
+    paths: { type: Array, default: () => ['src'] },
+    targets: { type: Array, default: () => ['todo'] },
+  },
+  computed: {
+    pathsLabel() {
+      return this.paths.join(', ')
+    },
+    targetsLabel() {
+      return this.targets.join(', ')
+    },
+  },
 }
-}
-
 </script>

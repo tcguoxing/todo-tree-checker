@@ -1,4 +1,4 @@
 node_modules
-test
-.package-lock.json
-
+todo-report.json
+*.tgz
+.DS_Store
